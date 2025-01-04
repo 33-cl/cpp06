@@ -3,7 +3,7 @@ NAME = prog
 CXX = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-SRC = src/main.cpp src/Serializer.cpp
+SRC = src/main.cpp src/functions.cpp src/Base.cpp
 OBJ_DIR = .build
 OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
 
@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CFLAGS) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: src/%.cpp inc/Serializer.hpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: src/%.cpp inc/Base.hpp inc/A.hpp inc/B.hpp inc/C.hpp | $(OBJ_DIR)
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
