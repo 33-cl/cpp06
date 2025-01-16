@@ -3,7 +3,7 @@ NAME = convert
 CXX = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-SRC = src/main.cpp src/utils.cpp
+SRC = src/main.cpp src/utils.cpp src/ScalarConverter.cpp
 OBJ_DIR = .build
 OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
 
@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CFLAGS) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: src/%.cpp inc/ScalarConverter.hpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: src/%.cpp inc/ScalarConverter.hpp inc/utils.hpp | $(OBJ_DIR)
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):

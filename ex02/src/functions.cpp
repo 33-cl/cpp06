@@ -2,7 +2,7 @@
 
 Base*   generate(void)
 {
-    Base*   object;
+    Base*   object = NULL;
 
     std::srand(std::time(0));
     int random = std::rand() % 3;
@@ -18,6 +18,7 @@ Base*   generate(void)
 
 void    identify(Base* p)
 {
+
     if (dynamic_cast<A*>(p))
         std::cout << "Type: A" << std::endl;
     else if (dynamic_cast<B*>(p))
@@ -32,21 +33,21 @@ void    identify(Base& p)
 {
     try 
     {
-        dynamic_cast<A&>(p);
+        (void)dynamic_cast<A&>(p);
         std::cout << "Type: A" << std::endl;
     }
     catch (const std::bad_cast&)
     {
         try
         {
-            dynamic_cast<B&>(p);
+            (void)dynamic_cast<B&>(p);
             std::cout << "Type: B" << std::endl;
         }
         catch (const std::bad_cast&)
         {
             try
             {
-                dynamic_cast<C&>(p);
+                (void)dynamic_cast<C&>(p);
                 std::cout << "Type: C" << std::endl;
             }
             catch (const std::bad_cast&)

@@ -11,14 +11,6 @@ typedef enum e_type
     DOUBLE,
 } t_type;
 
-int ft_stoi(const std::string& str) 
-{
-    std::stringstream ss(str);
-    int value;
-
-    ss >> value;
-    return value;
-}
 
 bool    specific_case(const std::string& str)
 {
@@ -89,11 +81,38 @@ int    guess_type(const std::string& str)
     return OTHER;
 }
 
-void    print_char(char c)
+void    print_char(int c)
 {
     std::cout << "char: ";
     if (c < 32 || c > 126)
         std::cout << "Non displayable" << std::endl;
     else
-        std::cout << "'" << c << "'" << std::endl;
+        std::cout << "'" << static_cast<char>(c) << "'" << std::endl;
+}
+
+int ft_stoi(const std::string& str) 
+{
+    std::stringstream ss(str);
+    int value;
+
+    ss >> value;
+    return value;
+}
+
+float   ft_stof(const std::string& str)
+{
+    std::stringstream ss(str);
+    float   value;
+
+    ss >> value;
+    return value;
+}
+
+double  ft_stod(const std::string& str)
+{
+    std::stringstream ss(str);
+    double  value;
+
+    ss >> value;
+    return value;
 }
